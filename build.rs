@@ -17,6 +17,8 @@ fn cfg() {
     let ok_arch = matches!(&*target_arch, "x86" | "x86_64");
     let sse4_2_guaranteed = target_feature.split(',').any(|f| f == "sse4.2");
 
+    println!("cargo::rustc-check-cfg=cfg(jetscii_sse4_2, values(\"yes\", \"maybe\", \"no\"))");
+
     if sse4_2_guaranteed {
         println!(r#"cargo:rustc-cfg=jetscii_sse4_2="yes""#);
     } else if ok_arch {
