@@ -292,7 +292,7 @@ pub struct ByteSubstring<'a> {
 }
 
 impl<'a> ByteSubstring<'a> {
-    pub /* const */ fn new(needle: &'a [u8]) -> Self {
+    pub const fn new(needle: &'a [u8]) -> Self {
         ByteSubstring {
             #[cfg(any(jetscii_sse4_2 = "yes", jetscii_sse4_2 = "maybe"))]
             simd: simd::ByteSubstring::new(needle),
